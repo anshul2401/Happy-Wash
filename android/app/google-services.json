@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "346299559359",
+    "project_id": "happy-wash-294608",
+    "storage_bucket": "happy-wash-294608.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346299559359:android:96f3ec084335c4410d050a",
+        "android_client_info": {
+          "package_name": "com.example.happy_wash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346299559359-4c3gdcdamkmvdn0fkl4c151t2fvir2nd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.happy_wash",
+            "certificate_hash": "c2ac8ece3b0a9981156066b02d307c268b83f994"
+          }
+        },
+        {
+          "client_id": "346299559359-dfnk6f6a508r1hrtq6h6mj103e8dqe8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUhboUEkvH2p12Lk_kvdhIYp6jdXMMG_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346299559359-dfnk6f6a508r1hrtq6h6mj103e8dqe8g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
