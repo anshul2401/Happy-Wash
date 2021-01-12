@@ -37,6 +37,7 @@ class _BookingConfirmedState extends State<BookingConfirmed> {
     orderProvider.setName(widget.orderDetails.name);
     orderProvider.setStatus(widget.orderDetails.status);
     orderProvider.setLandmark(widget.orderDetails.landmark);
+    orderProvider.setPackage(widget.orderDetails.package);
     orderProvider.saveOrder();
     Future<bool> _onBackPressed() {
       return Navigator.pushReplacement(

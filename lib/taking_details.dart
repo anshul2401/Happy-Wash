@@ -112,17 +112,20 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
       }
 
       if (rightpin) {
+        print(widget.package);
         var orderDetails = OrderItem(
-            address: address,
-            carModel: widget.carModel,
-            date: widget.date,
-            name: name,
-            orderId: " ",
-            phoneNum: authProvider.userModel.number,
-            status: 'Pending',
-            time: widget.time,
-            userId: authProvider.userModel.id,
-            landmark: landmark);
+          address: address,
+          carModel: widget.carModel,
+          date: widget.date,
+          name: name,
+          orderId: " ",
+          phoneNum: authProvider.userModel.number,
+          status: 'Pending',
+          time: widget.time,
+          userId: authProvider.userModel.id,
+          landmark: landmark,
+          package: widget.package,
+        );
         userServices.updateUserData({
           "id": authProvider.userModel.id,
           "number": authProvider.userModel.number,

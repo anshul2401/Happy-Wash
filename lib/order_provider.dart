@@ -16,6 +16,7 @@ class OrderProvider with ChangeNotifier {
   String _time;
   String _status;
   String _landmark;
+  String _package;
   var uuid = Uuid();
 
   String get userId => _userId;
@@ -27,6 +28,7 @@ class OrderProvider with ChangeNotifier {
   String get time => _time;
   String get status => _status;
   String get landmark => _landmark;
+  String get package => _package;
 
   setUserID(String value) {
     _userId = value;
@@ -72,18 +74,25 @@ class OrderProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  setPackage(String value) {
+    _package = value;
+    notifyListeners();
+  }
+
   saveOrder() {
     var newOrder = OrderItem(
-        orderId: uuid.v4(),
-        userId: _userId,
-        name: _name,
-        address: _address,
-        phoneNum: _phoneNum,
-        carModel: _carModel,
-        date: _date,
-        time: _time,
-        status: _status,
-        landmark: _landmark);
+      orderId: uuid.v4(),
+      userId: _userId,
+      name: _name,
+      address: _address,
+      phoneNum: _phoneNum,
+      carModel: _carModel,
+      date: _date,
+      time: _time,
+      status: _status,
+      landmark: _landmark,
+      package: _package,
+    );
     orderService.saveOrder(newOrder);
   }
 

@@ -14,21 +14,23 @@ class OrderItem {
   final String time;
   final String status;
   final String landmark;
+  final String package;
 
-  OrderItem(
-      {
-      // @required this.id,
+  OrderItem({
+    // @required this.id,
 
-      @required this.orderId,
-      @required this.userId,
-      @required this.name,
-      @required this.address,
-      @required this.phoneNum,
-      @required this.carModel,
-      @required this.date,
-      @required this.time,
-      @required this.status,
-      @required this.landmark});
+    @required this.orderId,
+    @required this.userId,
+    @required this.name,
+    @required this.address,
+    @required this.phoneNum,
+    @required this.carModel,
+    @required this.date,
+    @required this.time,
+    @required this.status,
+    @required this.landmark,
+    @required this.package,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -41,7 +43,8 @@ class OrderItem {
       "date": date,
       "time": time,
       "status": status,
-      "landmark": landmark
+      "landmark": landmark,
+      "package": package
     };
   }
 
@@ -55,5 +58,6 @@ class OrderItem {
         date = firestore['date'],
         time = firestore['time'],
         status = firestore['status'],
-        landmark = firestore['landmark'];
+        landmark = firestore['landmark'],
+        package = firestore['package'];
 }
