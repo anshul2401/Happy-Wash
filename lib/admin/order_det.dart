@@ -12,6 +12,35 @@ class OrderDet extends StatefulWidget {
 
 class _OrderDetState extends State<OrderDet> {
   OrderServices orderServices = new OrderServices();
+  String getPackage(String package) {
+    if (package == '2') {
+      return 'Premium Wash';
+    }
+    if (package == '3') {
+      return 'Interior Detailing';
+    }
+    if (package == '4') {
+      return 'Exterior Wash';
+    }
+  }
+
+  String getCarModel(String car) {
+    if (car == '1') {
+      return 'Hatch back';
+    }
+    if (car == '2') {
+      return 'Sedan';
+    }
+    if (car == '3') {
+      return 'Compact SUV';
+    }
+    if (car == '4') {
+      return 'SUV';
+    }
+    if (car == '5') {
+      return 'MUV';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +120,16 @@ class _OrderDetState extends State<OrderDet> {
                 height: 10,
               ),
               Text(
-                'CAR MODEL: ' + widget.order.carModel,
+                'CAR MODEL: ' + getCarModel(widget.order.carModel),
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                'PACKGAE: ' + getPackage(widget.order.package),
                 style: TextStyle(
                   fontSize: 18,
                 ),
@@ -132,7 +170,28 @@ class _OrderDetState extends State<OrderDet> {
                   FlatButton(
                     color: Colors.blue,
                     onPressed: () {
-                      SocialShare.shareWhatsapp("Hello World");
+                      SocialShare.shareWhatsapp('NAME: ' +
+                          widget.order.name +
+                          '\n' +
+                          'ADDRESS: ' +
+                          widget.order.address +
+                          '\n' +
+                          'LANDMARK: ' +
+                          widget.order.landmark +
+                          '\n' +
+                          'PHONE: ' +
+                          widget.order.phoneNum +
+                          '\n' +
+                          'DATE AND TIME: ' +
+                          widget.order.date +
+                          ' at ' +
+                          widget.order.time +
+                          '\n' +
+                          'CAR MODEL: ' +
+                          getCarModel(widget.order.carModel) +
+                          '\n' +
+                          'PACKGAE: ' +
+                          getPackage(widget.order.package));
                     },
                     child: Text(
                       'Share',
