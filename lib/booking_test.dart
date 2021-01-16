@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_wash/after_login.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
@@ -32,6 +33,43 @@ class _BookingState extends State<Booking> {
     if (index == 2) {
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => YourBooking()));
+    }
+  }
+
+  final CollectionReference carPrice = Firestore.instance.collection('price');
+  var prices;
+  Future getPrice() async {
+    try {
+      await carPrice.getDocuments().then((value) {
+        value.documents.forEach((element) {
+          // print(element.data);
+          // price.add(element.data);
+          prices = element.data;
+        });
+      });
+      return prices;
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  var p;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    fetchPrice();
+  }
+
+  fetchPrice() async {
+    dynamic prices = await getPrice();
+    if (prices == null) {
+      print('error');
+    } else {
+      setState(() {
+        p = prices;
+      });
+      print(p['hatch_back']['interior_detailing']);
     }
   }
 
