@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:happy_wash/after_login.dart';
-import 'package:happy_wash/auth.dart';
-import 'package:happy_wash/loding.dart';
-import 'package:happy_wash/login.dart';
+
 import 'package:happy_wash/login_d/stores/login_store.dart';
 import 'package:happy_wash/notification.dart';
 import 'package:happy_wash/profile.dart';
@@ -14,6 +12,7 @@ import 'package:happy_wash/yourBooking.dart';
 import 'package:provider/provider.dart';
 
 import 'how_it_works.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class Gallery extends StatefulWidget {
   @override
@@ -39,6 +38,45 @@ class _GalleryState extends State<Gallery> {
 
   @override
   Widget build(BuildContext context) {
+    Future<Widget> _getImage(BuildContext context, String imageName) async {
+       Image image;
+       await FirestorageService.loadImage(context, imageName).then((value) {
+         image=Image.network(value.toString(),fit: BoxFit.scaleDown,);
+       } 
+
+       );
+       return image;
+
+    }
+
+    Widget loadImg(String image){
+      return FutureBuilder(
+            future: _getImage(context, image),
+            builder: (context, snapshot) {
+              if(snapshot.connectionState==ConnectionState.done){
+                return ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                                  child: Container(
+                    
+                    padding: EdgeInsets.all(5),
+                    width: MediaQuery.of(context).size.width,
+                    child: snapshot.data,
+
+                  ),
+                );
+              }
+              if(snapshot.connectionState==ConnectionState.waiting){
+                return Container(
+                  // height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width/2,
+                  child: CircularProgressIndicator(),
+
+                );
+              }
+              return Container();
+            },
+          );
+    }
     final authProvider = Provider.of<LoginStore>(context);
     return Scaffold(
       appBar: AppBar(
@@ -125,7 +163,25 @@ class _GalleryState extends State<Gallery> {
               ),
         ]
       ),
-      body: Text("Content here"),
+      body: ListView(
+      children:[
+        Column(
+        children: [
+          loadImg('gallery1.jpeg'),
+          loadImg('gallery2.jpeg'),
+          loadImg('gallery3.jpeg'),
+
+          loadImg('gallery4.jpeg'),
+          loadImg('gallery5.jpeg'),
+          loadImg('gallery6.jpeg'),
+          loadImg('gallery7.jpeg'),
+          loadImg('gallery8.jpeg'),
+          loadImg('gallery9.jpeg'),
+          loadImg('gallery10.jpeg'),
+          
+        ],
+      ),],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 35,
         backgroundColor: Colors.white,
@@ -149,5 +205,13 @@ class _GalleryState extends State<Gallery> {
         onTap: _onItemTapped,
       ),
     );
+  }
+}
+
+
+class FirestorageService extends ChangeNotifier{
+  FirestorageService();
+  static Future<dynamic> loadImage(BuildContext context,String image) async {
+    return await FirebaseStorage.instance.ref().child(image).getDownloadURL();
   }
 }
