@@ -42,8 +42,6 @@ class _BookingState extends State<Booking> {
     try {
       await carPrice.getDocuments().then((value) {
         value.documents.forEach((element) {
-          // print(element.data);
-          // price.add(element.data);
           prices = element.data;
         });
       });
@@ -56,7 +54,6 @@ class _BookingState extends State<Booking> {
   var p;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchPrice();
   }
@@ -69,7 +66,7 @@ class _BookingState extends State<Booking> {
       setState(() {
         p = prices;
       });
-      print(p['hatch_back']['interior_detailing']);
+      // print(p['hatch_back']['interior_detailing']);
     }
   }
 
@@ -81,51 +78,51 @@ class _BookingState extends State<Booking> {
       if (widget.package == 1) {
         return '100';
       } else if (widget.package == 2) {
-        return '249';
+        return p['hatch_back']['premium_wash'];
       } else if (widget.package == 3) {
-        return '199';
+        return p['hatch_back']['interior_detailing'];
       } else if (widget.package == 4) {
-        return '149';
+        return p['hatch_back']['exterior_wash'];
       }
     } else if (carType == 2) {
       if (widget.package == 1) {
-        return '400';
+        return '100';
       } else if (widget.package == 2) {
-        return '299';
+        return p['sedan']['premium_wash'];
       } else if (widget.package == 3) {
-        return '249';
+        return p['sedan']['interior_detailing'];
       } else if (widget.package == 4) {
-        return '199';
+        return p['sedan']['exterior_wash'];
       }
     } else if (carType == 3) {
       if (widget.package == 1) {
-        return '700';
+        return '100';
       } else if (widget.package == 2) {
-        return '349';
+        return p['compact_suv']['premium_wash'];
       } else if (widget.package == 3) {
-        return '299';
+        return p['compact_suv']['interior_detailing'];
       } else if (widget.package == 4) {
-        return '249';
+        return p['compact_suv']['exterior_wash'];
       }
     } else if (carType == 4) {
       if (widget.package == 1) {
-        return '1000';
+        return '100';
       } else if (widget.package == 2) {
-        return '399';
+        return p['suv']['premium_wash'];
       } else if (widget.package == 3) {
-        return '349';
+        return p['suv']['interior_detailing'];
       } else if (widget.package == 4) {
-        return '299';
+        return p['suv']['exterior_wash'];
       }
     } else if (carType == 5) {
       if (widget.package == 1) {
-        return '1300';
+        return '100';
       } else if (widget.package == 2) {
-        return '499';
+        return p['muv']['premium_wash'];
       } else if (widget.package == 3) {
-        return '449';
+        return p['muv']['interior_detailing'];
       } else if (widget.package == 4) {
-        return '399';
+        return p['muv']['exterior_wash'];
       }
     }
     return '';

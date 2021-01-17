@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_wash/after_login.dart';
@@ -30,100 +31,41 @@ class Package extends StatefulWidget {
 }
 
 class PackageState extends State<Package> {
-  List packagePrice = [
-    [
-      Text(
-        'Rs 249',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 199',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 149',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-    ],
-    [
-      Text(
-        'Rs 299',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 249',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 199',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-    ],
-    [
-      Text(
-        'Rs 349',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 299',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 249',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-    ],
-    [
-      Text(
-        'Rs 399',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 349',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 299',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-    ],
-    [
-      Text(
-        'Rs 499',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 449',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-      Text(
-        'Rs 399',
-        style: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.bold, fontFamily: 'Alegreya'),
-      ),
-    ],
-  ];
+  final CollectionReference carPrice = Firestore.instance.collection('price');
+  var prices;
+  Future getPrice() async {
+    try {
+      await carPrice.getDocuments().then((value) {
+        value.documents.forEach((element) {
+          prices = element.data;
+        });
+      });
+      return prices;
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
-  int selectedRadioTile;
+  var p;
   @override
   void initState() {
     super.initState();
+    fetchPrice();
     selectedRadioTile = 0;
   }
+
+  fetchPrice() async {
+    dynamic prices = await getPrice();
+    if (prices == null) {
+      print('error');
+    } else {
+      setState(() {
+        p = prices;
+      });
+    }
+  }
+
+  int selectedRadioTile;
 
   setSelectedRadioTile(int val) {
     setState(() {
@@ -133,6 +75,123 @@ class PackageState extends State<Package> {
 
   @override
   Widget build(BuildContext context) {
+    List<List<Text>> packagePrice = [
+      [
+        Text(
+          p['hatch_back']['premium_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['hatch_back']['interior_detailing'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['hatch_back']['exterior_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+      ],
+      [
+        Text(
+          p['sedan']['premium_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['sedan']['interior_detailing'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['sedan']['exterior_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+      ],
+      [
+        Text(
+          p['compact_suv']['premium_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['compact_suv']['interior_detailing'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['compact_suv']['exterior_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+      ],
+      [
+        Text(
+          p['suv']['premium_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['suv']['interior_detailing'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['suv']['exterior_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+      ],
+      [
+        Text(
+          p['muv']['premium_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['muv']['interior_detailing'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+        Text(
+          p['muv']['exterior_wash'],
+          style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Alegreya'),
+        ),
+      ],
+    ];
     final authProvider = Provider.of<LoginStore>(context);
     void _onItemTapped(int index) {
       if (index == 0) {
@@ -154,68 +213,7 @@ class PackageState extends State<Package> {
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(0, 127, 219, 1),
         elevation: 5,
-        // leading: Image.asset('images/logo4.png'),
-        // leading: PopupMenuButton(
-        //     onSelected: (int selectedValue) => {
-        //           if (selectedValue == 0)
-        //             {
-        //               Navigator.push(context,
-        //                   MaterialPageRoute(builder: (context) => HowItWorks()))
-        //             }
-        //           else if (selectedValue == 1)
-        //             {
-        //               Navigator.push(context,
-        //                   MaterialPageRoute(builder: (context) => Gallery()))
-        //             }
-        //           else if (selectedValue == 2)
-        //             {
-        //               Navigator.push(context,
-        //                   MaterialPageRoute(builder: (context) => About()))
-        //             }
-        //           else if (selectedValue == 3)
-        //             {
-        //               Navigator.push(context,
-        //                   MaterialPageRoute(builder: (context) => Faq()))
-        //             }
-        //           else if (selectedValue == 4)
-        //             {
-        //               Navigator.push(context,
-        //                   MaterialPageRoute(builder: (context) => ContactUs()))
-        //             }
-        //           else if (selectedValue == 5)
-        //             {
-        //               Navigator.push(context,
-        //                   MaterialPageRoute(builder: (context) => Services()))
-        //             }
-        //           // else if (selectedValue == 6)
-        //           //   {
-        //           //     Navigator.push(
-        //           //         context,
-        //           //         MaterialPageRoute(
-        //           //             builder: (context) => YourBooking()))
-        //           //   }
-        //           else if (selectedValue == 7)
-        //             {
-        //               authProvider.signOut(context),
-        //               // authProvider.status == Status.Authenticating
-        //               //     ? Loading()
-        //               //     : Navigator.pushReplacement(
-        //               //         context,
-        //               //         MaterialPageRoute(
-        //               //             builder: (context) => Login()))
-        //             }
-        //         },
-        //     icon: Icon(Icons.menu,size: 35,),
-        //     itemBuilder: (_) => [
-        //           PopupMenuItem(child: Text('How it works?'), value: 0),
-        //           PopupMenuItem(child: Text('Gallery'), value: 1),
-        //           PopupMenuItem(child: Text('About'), value: 2),
-        //           PopupMenuItem(child: Text('FAQ\'s'), value: 3),
-        //           PopupMenuItem(child: Text('Contact Us'), value: 4),
-        //           PopupMenuItem(child: Text('Services'), value: 5),
-        //           // PopupMenuItem(child: Text('Your Booking'), value: 6),
-        //           PopupMenuItem(child: Text('Log Out'), value: 7),
-        //         ]),
+
         title: Text(
           'HappyWash',
           style: TextStyle(fontSize: 25),
