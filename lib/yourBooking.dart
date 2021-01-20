@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:happy_wash/auth.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
 import 'package:happy_wash/notification.dart';
+import 'package:happy_wash/order_service.dart';
 
 import 'package:happy_wash/orders.dart';
 import 'package:happy_wash/screens/how_it_works.dart';
@@ -21,6 +22,80 @@ class YourBooking extends StatefulWidget {
 }
 
 class _YourBookingState extends State<YourBooking> {
+  OrderServices orderServices = new OrderServices();
+  void cancelOrder(OrderItem order,BuildContext context){
+    // set up the buttons
+  Widget cancelButton = FlatButton(
+    child: Text("Yes"),
+    onPressed:  () {
+      setState(() {
+                        try {
+                          orderServices.updateUserData({
+                            "id": order.orderId,
+                            "userId": order.userId,
+                            'name':order.name,
+                            'address': order.address,
+                            'phoneNum': order.phoneNum,
+                            'carModel': order.carModel,
+                            'date': order.date,
+                            'time': order.time,
+                            'status': 'Cancel',
+                            'landmark': order.landmark
+                          });
+                          Navigator.of(context).pop();
+                          // set up the button
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () { 
+      Navigator.of(context).pop();
+    },
+  );
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    
+    content: Text("We will get back to you regarding refund."),
+    actions: [
+      okButton,
+    ],
+  );
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+                        } catch (e) {
+                          print(e);
+                        }
+                      });
+    },
+  );
+  Widget continueButton = FlatButton(
+    child: Text("No"),
+    onPressed:  () {
+      Navigator.of(context).pop();
+    },
+  );
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    
+    content: Text("Are you sure you want to cancel the order?"),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+    
+  }
+  
   @override
   Widget build(BuildContext context) {
     
@@ -146,20 +221,20 @@ class _YourBookingState extends State<YourBooking> {
                       title: Text('Booked On'),
                       subtitle:
                           Text(order[index].date + ' At ' + order[index].time),
-                      trailing: 
+                      trailing:
+                      order[index].status=='Pending'? FlatButton(onPressed:(){ cancelOrder(order[index],context);}, child: Text('Cancel'),color: Colors.red[900],textColor: Colors.white,):
                       Text.rich(TextSpan(children: [
                         TextSpan(
             text: 'Status: ',
             style: TextStyle(fontWeight: FontWeight.bold)
            ),
-                TextSpan(
+                TextSpan( 
             text: order[index].status,
             style: TextStyle(
                 
-                color: order[index].status=='Pending'? Colors.red[900]:Colors.green[900]))
-                      ])),
-                      // Text('Status: ' + order[index].status,
-                      //     style: TextStyle(color: Colors.red[900])),
+                color: order[index].status=='Cancel'? Colors.red[900]:Colors.green[900],),)
+                      ],),),
+                     
                     ),
                   ),
                 );

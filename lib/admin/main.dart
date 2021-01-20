@@ -30,6 +30,7 @@ class _AdminScreenState extends State<AdminScreen> {
         .toList();
     // print(formatter.format(pickedDate).toString());
     // print(order);
+
     final authProvider = Provider.of<LoginStore>(context);
 
     void _presentDatePicker() {
@@ -118,8 +119,10 @@ class _AdminScreenState extends State<AdminScreen> {
                                     text: order[index].status,
                                     style: TextStyle(
                                         color: order[index].status == 'Pending'
-                                            ? Colors.red[900]
-                                            : Colors.green[900]))
+                                            ? Colors.yellow[900]
+                                            : order[index].status == 'Cancel'
+                                                ? Colors.red
+                                                : Colors.green[900]))
                               ])),
                             ),
                           ),

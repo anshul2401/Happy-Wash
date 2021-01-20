@@ -141,27 +141,32 @@ class _OrderDetState extends State<OrderDet> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   FlatButton(
-                    color: Colors.blue,
-                    onPressed: () {
-                      setState(() {
-                        try {
-                          orderServices.updateUserData({
-                            "id": widget.order.orderId,
-                            "userId": widget.order.userId,
-                            'name': widget.order.name,
-                            'address': widget.order.address,
-                            'phoneNum': widget.order.phoneNum,
-                            'carModel': widget.order.carModel,
-                            'date': widget.order.date,
-                            'time': widget.order.time,
-                            'status': 'Completed',
-                            'landmark': widget.order.landmark
-                          });
-                        } catch (e) {
-                          print(e);
-                        }
-                      });
-                    },
+                    color: widget.order.status == 'Completed'
+                        ? Colors.grey
+                        : Colors.blue,
+                    onPressed: widget.order.status == 'Cancel'
+                        ? null
+                        : () {
+                            setState(() {
+                              try {
+                                orderServices.updateUserData({
+                                  "id": widget.order.orderId,
+                                  "userId": widget.order.userId,
+                                  'name': widget.order.name,
+                                  'address': widget.order.address,
+                                  'phoneNum': widget.order.phoneNum,
+                                  'carModel': widget.order.carModel,
+                                  'date': widget.order.date,
+                                  'time': widget.order.time,
+                                  'status': 'Completed',
+                                  'landmark': widget.order.landmark
+                                });
+                                Navigator.of(context).pop();
+                              } catch (e) {
+                                print(e);
+                              }
+                            });
+                          },
                     child: Text(
                       'Completed',
                       style: TextStyle(color: Colors.white),
