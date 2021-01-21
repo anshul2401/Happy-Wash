@@ -68,7 +68,7 @@ class _YourBookingState extends State<YourBooking> {
                         } catch (e) {
                           print(e);
                         }
-                      });
+                      },);
     },
   );
   Widget continueButton = FlatButton(

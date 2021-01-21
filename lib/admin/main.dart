@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:happy_wash/admin/cancelled_order.dart';
 import 'package:happy_wash/admin/order_det.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
 import 'package:happy_wash/orders.dart';
@@ -52,22 +53,35 @@ class _AdminScreenState extends State<AdminScreen> {
 
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Color.fromRGBO(0, 127, 219, 1),
-          elevation: 5,
-          title: Text(
-            'HappyWash',
-            style: TextStyle(fontSize: 25),
-            textAlign: TextAlign.center,
-          ),
-          centerTitle: true,
-          actions: [
-            GestureDetector(
-              child: Icon(Icons.logout),
-              onTap: () {
-                authProvider.signOut(context);
-              },
+        backgroundColor: Color.fromRGBO(0, 127, 219, 1),
+        elevation: 5,
+        title: Text(
+          'HappyWash',
+          style: TextStyle(fontSize: 25),
+          textAlign: TextAlign.center,
+        ),
+        centerTitle: true,
+        leading: PopupMenuButton(
+            onSelected: (int selectedValue) => {
+                  if (selectedValue == 0)
+                    {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CancelledOrder()))
+                    }
+                  else if (selectedValue == 1)
+                    {authProvider.signOut(context)}
+                },
+            icon: Icon(
+              Icons.menu,
+              size: 35,
             ),
-          ]),
+            itemBuilder: (_) => [
+                  PopupMenuItem(child: Text('Cancelled'), value: 0),
+                  PopupMenuItem(child: Text('Log Out'), value: 1),
+                ]),
+      ),
       body: Column(
         children: [
           FlatButton(

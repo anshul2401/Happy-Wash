@@ -49,21 +49,6 @@ class _DetailsOfBookingState extends State<DetailsOfBooking> {
   void externalWallet(ExternalWalletResponse response) {
     Fluttertoast.showToast(msg: "EXTERNAL_WALLET: " + response.walletName);
   }
-  // void paymentSuccessful(PaymentSuccessResponse response) {
-  //   Fluttertoast.showToast(
-  //       msg: "SUCCESS: " + response.paymentId, timeInSecForIosWeb: 4);
-  // }
-
-  // void paymentError(PaymentFailureResponse response) {
-  //   Fluttertoast.showToast(
-  //       msg: "ERROR: " + response.code.toString() + " - " + response.message,
-  //       timeInSecForIosWeb: 4);
-  // }
-
-  // void externalWallet(ExternalWalletResponse response) {
-  //   Fluttertoast.showToast(
-  //       msg: "EXTERNAL_WALLET: " + response.walletName, timeInSecForIosWeb: 4);
-  // }
 
   void openCheckout() {
     var options = {
