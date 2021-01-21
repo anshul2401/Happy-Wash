@@ -68,7 +68,9 @@ class _CancelledOrderState extends State<CancelledOrder> {
                                     child: Column(
                                       children: [
                                         ListTile(
-                                          title: Text(order[index].time),
+                                          title: Text(order[index].date +
+                                              ' at ' +
+                                              order[index].time),
                                           subtitle: Text(order[index].address),
                                           trailing: Text.rich(
                                             TextSpan(
@@ -157,7 +159,9 @@ class _CancelledOrderState extends State<CancelledOrder> {
                                   child: Card(
                                     elevation: 5,
                                     child: ListTile(
-                                      title: Text(orderRefunded[index].time),
+                                      title: Text(orderRefunded[index].date +
+                                          ' at ' +
+                                          orderRefunded[index].time),
                                       subtitle:
                                           Text(orderRefunded[index].address),
                                       trailing: Text.rich(TextSpan(children: [

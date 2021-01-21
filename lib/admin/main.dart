@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:happy_wash/admin/cancel_date.dart';
 import 'package:happy_wash/admin/cancelled_order.dart';
 import 'package:happy_wash/admin/order_det.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
@@ -81,6 +82,13 @@ class _AdminScreenState extends State<AdminScreen> {
                                   builder: (context) => CancelledOrder()))
                         }
                       else if (selectedValue == 1)
+                        {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CancelDateTime()))
+                        }
+                      else if (selectedValue == 2)
                         {authProvider.signOut(context)}
                     },
                 icon: Icon(
@@ -89,7 +97,8 @@ class _AdminScreenState extends State<AdminScreen> {
                 ),
                 itemBuilder: (_) => [
                       PopupMenuItem(child: Text('Cancelled'), value: 0),
-                      PopupMenuItem(child: Text('Log Out'), value: 1),
+                      PopupMenuItem(child: Text('Cancel DateTime'), value: 1),
+                      PopupMenuItem(child: Text('Log Out'), value: 2),
                     ]),
           ),
           body: TabBarView(
