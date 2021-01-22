@@ -39,15 +39,9 @@ class _ProfileState extends State<Profile> {
       
     }
 
-    // final authProvider = Provider.of<AuthProvider>(context);
+     
     final authProvider = Provider.of<LoginStore>(context);
-    // final user = Provider.of<AuthProvider>(context);
-    final user = Provider.of<LoginStore>(context);
-
-    // final order = Provider.of<List<OrderItem>>(context)
-    //     .where((element) => element.userId == user.firebaseUser.uid)
-    //     .toList();
-    // final total_order= order.length; 
+    
     
 
     return Scaffold(
@@ -193,17 +187,7 @@ class _ProfileState extends State<Profile> {
                           style: TextStyle(fontSize: 18),
                         ),
                       ]),
-                      // TableRow(children: [Text(''), Text('')]),
-                      // TableRow(children: [
-                      //   Text(
-                      //     'Total Amount:',
-                      //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
-                      //   ),
-                      //   Text(
-                      //     'INR ' + widget.amount,
-                      //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      //   ),
-                      // ])
+                     
                     ],
                   ),
           ],

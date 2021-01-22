@@ -153,6 +153,33 @@ class _BookingState extends State<Booking> {
           taken = true;
         }
       }
+      double getTime(time) {
+        if (time == '9 AM') {
+          return 9;
+        }
+        if (time == '10:30 AM') {
+          return 10.5;
+        }
+        if (time == '12 PM') {
+          return 12;
+        }
+        if (time == '2 PM') {
+          return 14;
+        }
+        if (time == '3:30 PM') {
+          return 15.5;
+        }
+        if (time == '5 PM') {
+          return 17;
+        }
+      }
+
+      if (formatter.format(DateTime.now()).toString() ==
+              formatter.format(_selectedDate).toString() &&
+          DateTime.now().hour.toDouble() + 0.5 > getTime(time)) {
+        taken = true;
+      }
+
       if (_selectedDate == null || taken == true) {
         return Padding(
           padding: const EdgeInsets.all(10.0),

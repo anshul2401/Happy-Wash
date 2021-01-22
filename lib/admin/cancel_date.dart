@@ -34,30 +34,6 @@ class _CancelDateTimeState extends State<CancelDateTime> {
           taken = true;
         }
       }
-      // int getTime(time) {
-      //   if (time == '9 AM') {
-      //     return 9;
-      //   }
-      //   if (time == '10:30 AM') {
-      //     return 10;
-      //   }
-      //   if (time == '12 AM') {
-      //     return 12;
-      //   }
-      //   if (time == '2 AM') {
-      //     return 14;
-      //   }
-      //   if (time == '3:30 AM') {
-      //     return 15;
-      //   }
-      //   if (time == '5 AM') {
-      //     return 17;
-      //   }
-      // }
-
-      // if (DateTime.now().hour + 1 > 5) {
-      //   taken = true;
-      // }
 
       if (_selectedDate == null || taken == true) {
         return Padding(
