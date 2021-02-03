@@ -97,6 +97,7 @@ class _YourBookingState extends State<YourBooking> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     void _onItemTapped(int index) {
       if (index == 0) {
         Navigator.pushReplacement(

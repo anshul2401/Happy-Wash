@@ -242,34 +242,6 @@ class PackageState extends State<Package> {
                 height: 20,
               ),
 
-              // ExpandablePanel(
-              //   header: Card(
-              //     elevation: 5,
-              //     child: RadioListTile(
-              //       value: 1,
-              //       groupValue: selectedRadioTile,
-              //       title: Text(
-              //         "Package",
-              //         style: TextStyle(fontSize: 20),
-              //       ),
-
-              //       onChanged: (val) {
-              //         setSelectedRadioTile(val);
-              //       },
-              //       activeColor: Color.fromRGBO(0, 127, 219, 1),
-              //       // secondary: Text('Rs xxx',style: TextStyle(fontSize: 20),),
-              //       secondary: packagePrice[widget.carType - 1][0],
-              //     ),
-              //   ),
-              //   // collapsed: Text("COntent", softWrap: true, maxLines: 2, overflow: TextOverflow.ellipsis,),
-              //   expanded: Text(
-              //     "ckiokt",
-              //     softWrap: true,
-              //   ),
-              //   headerAlignment: ExpandablePanelHeaderAlignment.center,
-              //   // tapHeaderToExpand: true,
-              //   // hasIcon: true,
-              // ),
               Card(
                 elevation: 5,
                 child: ExpansionTile(

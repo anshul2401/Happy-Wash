@@ -149,7 +149,7 @@ class _BookingState extends State<Booking> {
     Widget showButton(String time) {
       var taken = false;
       for (var i = 0; i < order.length; i++) {
-        if (time == order[i].time) {
+        if (time == order[i].time && order[i].status != 'Cancel') {
           taken = true;
         }
       }

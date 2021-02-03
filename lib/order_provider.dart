@@ -95,16 +95,4 @@ class OrderProvider with ChangeNotifier {
     );
     orderService.saveOrder(newOrder);
   }
-
-  // OrderProvider.fromSnapshot(DocumentSnapshot snapshot) {
-  //   _orderId = snapshot.data["id"];
-  //   _userId = snapshot.data['userId'];
-  //   _name = snapshot.data['name'];
-  //   _address = snapshot.data['address'];
-  //   _phoneNum = snapshot.data['phoneNum'];
-  //   _carModel = snapshot.data['carModel'];
-  //   _date = snapshot.data['date'];
-  //   _time = snapshot.data['time'];
-  //   _status = snapshot.data['status'];
-  // }
 }

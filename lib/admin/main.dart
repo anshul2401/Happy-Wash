@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:happy_wash/admin/cancel_date.dart';
 import 'package:happy_wash/admin/cancelled_order.dart';
@@ -14,6 +15,14 @@ class AdminScreen extends StatefulWidget {
 
 class _AdminScreenState extends State<AdminScreen> {
   DateTime pickedDate = DateTime.now();
+  final FirebaseMessaging _messaging = FirebaseMessaging();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _messaging.getToken().then((value) => print(value));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -144,8 +153,7 @@ class _AdminScreenState extends State<AdminScreen> {
                                     elevation: 5,
                                     child: ListTile(
                                       title: Text(pendingOrder[index].time),
-                                      subtitle:
-                                          Text(pendingOrder[index].address),
+                                      subtitle: Text(pendingOrder[index].name),
                                       trailing: Text.rich(TextSpan(children: [
                                         TextSpan(
                                             text: 'Status: ',
@@ -224,8 +232,7 @@ class _AdminScreenState extends State<AdminScreen> {
                                     elevation: 5,
                                     child: ListTile(
                                       title: Text(completeOrder[index].time),
-                                      subtitle:
-                                          Text(completeOrder[index].address),
+                                      subtitle: Text(completeOrder[index].name),
                                       trailing: Text.rich(TextSpan(children: [
                                         TextSpan(
                                             text: 'Status: ',

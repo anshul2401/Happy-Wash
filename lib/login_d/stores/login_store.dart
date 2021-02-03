@@ -139,8 +139,17 @@ abstract class LoginStoreBase with Store {
     isOtpLoading = true;
 
     firebaseUser = result.user;
-    // print("soenmnrnmmmememme");
-    // print(firebaseUser.uid);
+    // _userServicse.getUserById(firebaseUser.uid) == null
+    //     ? _userServicse.createUser({
+    //         "id": firebaseUser.uid,
+    //         "number": firebaseUser.phoneNumber,
+    //         "email": '',
+    //         "address": '',
+    //         "name": '',
+    //         "landmark": '',
+    //         "pin": '',
+    //       })
+    //     : null;
 
     _userServicse.createUser({
       "id": firebaseUser.uid,
@@ -152,6 +161,7 @@ abstract class LoginStoreBase with Store {
       "pin": '',
     });
     _userModel = await _userServicse.getUserById(firebaseUser.uid);
+    // _userModel = await _userServicse.getUserById(firebaseUser.uid);
     firebaseUser.phoneNumber == '+919340133342'
         ? Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (_) => AdminScreen()),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:happy_wash/order_provider.dart';
+import 'package:happy_wash/order_service.dart';
 import 'package:happy_wash/orders.dart';
 import 'package:provider/provider.dart';
 import 'package:happy_wash/date_picker/date_picker_widget.dart';
@@ -26,35 +27,56 @@ class _CancelDateTimeState extends State<CancelDateTime> {
         .toList();
     // ignore: missing_return
     final orderProvider = Provider.of<OrderProvider>(context);
+    OrderServices orderServices = new OrderServices();
 
     Widget showButton(String time) {
       var taken = false;
+      var orderId;
       for (var i = 0; i < order.length; i++) {
         if (time == order[i].time) {
           taken = true;
+          orderId = order[i].orderId;
         }
       }
 
       if (_selectedDate == null || taken == true) {
-        return Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey, width: 2),
-                borderRadius: BorderRadius.circular(5)),
-            width: 80,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 8),
-              child: Text(
-                time,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: Colors.grey),
-                textAlign: TextAlign.center,
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              orderServices.updateUserData({
+                "id": orderId,
+                "userId": '',
+                'name': '',
+                'address': '',
+                'phoneNum': '',
+                'carModel': '',
+                'date': '',
+                'time': '',
+                'status': '',
+                'landmark': ''
+              });
+            });
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 2),
+                  borderRadius: BorderRadius.circular(5)),
+              width: 80,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+                child: Text(
+                  time,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                      color: Colors.grey),
+                  textAlign: TextAlign.center,
+                ),
               ),
+              padding: EdgeInsets.all(0),
             ),
-            padding: EdgeInsets.all(0),
           ),
         );
       }

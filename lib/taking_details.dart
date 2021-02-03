@@ -56,26 +56,12 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
 
   _TakingUserDetailsState();
 
-  // final TextEditingController _nameController = new TextEditingController();
-
-  // final TextEditingController _emailController = new TextEditingController();
-  // final TextEditingController _addressController = new TextEditingController();
-  // final TextEditingController _landmarkController = new TextEditingController();
   final _form = GlobalKey<FormState>();
   String pin;
   String address;
   String email;
   String name;
   String landmark;
-
-  // @override
-  // void initState() {
-  //   _nameController.text = name;
-  //   _emailController.text = email;
-  //   _addressController.text = address;
-  //   _landmarkController.text = landmark;
-  //   return super.initState();
-  // }
 
   @override
   Widget build(BuildContext context) {

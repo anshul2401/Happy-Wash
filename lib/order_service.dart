@@ -7,6 +7,7 @@ class OrderServices {
   Firestore _firestore = Firestore.instance;
 
   Future<void> saveOrder(OrderItem order) {
+    print(order);
     return _firestore
         .collection('orders')
         .document(order.orderId)
