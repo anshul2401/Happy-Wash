@@ -139,27 +139,19 @@ abstract class LoginStoreBase with Store {
     isOtpLoading = true;
 
     firebaseUser = result.user;
-    // _userServicse.getUserById(firebaseUser.uid) == null
-    //     ? _userServicse.createUser({
-    //         "id": firebaseUser.uid,
-    //         "number": firebaseUser.phoneNumber,
-    //         "email": '',
-    //         "address": '',
-    //         "name": '',
-    //         "landmark": '',
-    //         "pin": '',
-    //       })
-    //     : null;
 
-    _userServicse.createUser({
-      "id": firebaseUser.uid,
-      "number": firebaseUser.phoneNumber,
-      "email": '',
-      "address": '',
-      "name": '',
-      "landmark": '',
-      "pin": '',
-    });
+    var _checkUser = await _userServicse.getUserById(firebaseUser.uid);
+    if (_checkUser == null) {
+      _userServicse.createUser({
+        "id": firebaseUser.uid,
+        "number": firebaseUser.phoneNumber,
+        "email": '',
+        "address": '',
+        "name": '',
+        "landmark": '',
+        "pin": '',
+      });
+    }
     _userModel = await _userServicse.getUserById(firebaseUser.uid);
     // _userModel = await _userServicse.getUserById(firebaseUser.uid);
     firebaseUser.phoneNumber == '+919340133342'

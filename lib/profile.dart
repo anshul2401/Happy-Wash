@@ -1,18 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
+
 import 'package:happy_wash/notification.dart';
-import 'package:happy_wash/user.dart';
 import 'package:happy_wash/yourBooking.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
 
-import 'package:happy_wash/orders.dart';
 import 'package:happy_wash/screens/how_it_works.dart';
-import 'package:happy_wash/screens/services.dart';
 import 'package:provider/provider.dart';
 
 import 'package:happy_wash/after_login.dart';
-import 'package:happy_wash/login.dart';
 import 'package:happy_wash/screens/about.dart';
 import 'package:happy_wash/screens/contact_us.dart';
 import 'package:happy_wash/screens/faq.dart';
@@ -24,8 +19,6 @@ class Profile extends StatefulWidget with ChangeNotifier {
 }
 
 class _ProfileState extends State<Profile> {
-
-
   var authProvider;
 
   @override
@@ -48,7 +41,6 @@ class _ProfileState extends State<Profile> {
       appBar: AppBar(
           backgroundColor: Color.fromRGBO(0, 127, 219, 1),
           elevation: 5,
-          // leading: Image.asset('images/logo4.png'),
           leading: PopupMenuButton(
               onSelected: (int selectedValue) => {
                     if (selectedValue == 0)
@@ -95,8 +87,6 @@ class _ProfileState extends State<Profile> {
                     PopupMenuItem(child: Text('About'), value: 2),
                     PopupMenuItem(child: Text('FAQ\'s'), value: 3),
                     PopupMenuItem(child: Text('Contact Us'), value: 4),
-                    // PopupMenuItem(child: Text('Services'), value: 5),
-                    // PopupMenuItem(child: Text('Your Booking'), value: 6),
                     PopupMenuItem(child: Text('Log Out'), value: 7),
                   ]),
           title: Text(
