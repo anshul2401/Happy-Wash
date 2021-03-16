@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:happy_wash/user.dart';
 
 class UserServices {

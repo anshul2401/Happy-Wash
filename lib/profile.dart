@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:happy_wash/notification.dart';
+import 'package:happy_wash/user.dart';
+import 'package:happy_wash/user_services.dart';
 import 'package:happy_wash/yourBooking.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
 
@@ -20,6 +25,28 @@ class Profile extends StatefulWidget with ChangeNotifier {
 
 class _ProfileState extends State<Profile> {
   var authProvider;
+  var updated;
+
+  UserServices _userServicse = UserServices();
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+
+  //   super.initState();
+  //   getUser();
+  // }
+
+  // Future<void> getUser() async {
+  //   print(firebaseUser.uid);
+  //   _userModel = await _userServicse.getUserById(firebaseUser.uid);
+  //   print(_userModel.name);
+  // }
+  setUserDetails(var user) {
+    setState(() {
+      updated = user;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +63,9 @@ class _ProfileState extends State<Profile> {
     }
 
     final authProvider = Provider.of<LoginStore>(context);
+    final user = _userServicse.getUserById(authProvider.firebaseUser.uid);
+
+    user.then((e) => {setUserDetails(e)});
 
     return Scaffold(
       appBar: AppBar(
@@ -129,9 +159,7 @@ class _ProfileState extends State<Profile> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   Text(
-                    authProvider.userModel.name == ''
-                        ? 'NA'
-                        : authProvider.userModel.name,
+                    updated.name == '' ? 'NA' : updated.name,
                     style: TextStyle(fontSize: 18),
                   ),
                 ]),
@@ -142,9 +170,7 @@ class _ProfileState extends State<Profile> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   Text(
-                    authProvider.userModel.address == ''
-                        ? 'NA'
-                        : authProvider.userModel.address,
+                    updated.address == '' ? 'NA' : updated.address,
                     style: TextStyle(fontSize: 18),
                   ),
                 ]),
@@ -155,7 +181,7 @@ class _ProfileState extends State<Profile> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   Text(
-                    authProvider.userModel.number,
+                    updated.number,
                     style: TextStyle(fontSize: 18),
                   ),
                 ]),
@@ -166,9 +192,7 @@ class _ProfileState extends State<Profile> {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                   Text(
-                    authProvider.userModel.email == ''
-                        ? 'NA'
-                        : authProvider.userModel.email,
+                    updated.email == '' ? 'NA' : updated.email,
                     style: TextStyle(fontSize: 18),
                   ),
                 ]),

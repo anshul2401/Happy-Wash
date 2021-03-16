@@ -35,33 +35,6 @@ class _AfterLoginState extends State<AfterLogin> {
 
   @override
   Widget build(BuildContext context) {
-    // Future<bool> _onBackPressed() {
-    //   return showDialog(
-    //         context: context,
-    //         builder: (context) => new AlertDialog(
-    //           title: new Text(
-    //             'HappyWash',
-    //             style: TextStyle(),
-    //             textAlign: TextAlign.center,
-    //           ),
-    //           content: new Text('Are you sure you want to exit?'),
-    //           actions: <Widget>[
-    //             new GestureDetector(
-    //               onTap: () => Navigator.of(context).pop(false),
-    //               child: Text("NO"),
-    //             ),
-    //             SizedBox(height: 16),
-    //             new GestureDetector(
-    //               // onTap: () => SystemNavigator.pop(),
-    //               onTap: () => Navigator.of(context).pop(true),
-    //               child: Text("YES"),
-    //             ),
-    //           ],
-    //         ),
-    //       ) ??
-    //       false;
-    // }
-
     final authProvider = Provider.of<LoginStore>(context);
     print(authProvider.userModel.number);
     if (authProvider.userModel.number == '+919340133342') {
@@ -233,50 +206,6 @@ class _AfterLoginState extends State<AfterLogin> {
                               ));
                         }),
                     GestureDetector(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(100),
-                                    // border: Border.all(width: 1, color: Colors.black),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey[400],
-                                          offset: Offset(1, 10),
-                                          blurRadius: 5)
-                                    ]),
-                                child: CircleAvatar(
-                                  radius: 40,
-                                  backgroundImage:
-                                      AssetImage('images/compact_suv.jpg'),
-                                ),
-                              ),
-                              SizedBox(height: 8),
-                              Text('Compact SUV',
-                                  style: TextStyle(fontSize: 18)),
-                              // Text('@ Rs 349', style: TextStyle(fontSize: 20))
-                            ],
-                          ),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => Package(3),
-                              ));
-                        }),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    SizedBox(
-                      width: 5,
-                    ),
-                    GestureDetector(
                       child: Padding(
                         padding: const EdgeInsets.all(8),
                         child: Column(
@@ -311,46 +240,90 @@ class _AfterLoginState extends State<AfterLogin> {
                             ));
                       },
                     ),
-                    GestureDetector(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Column(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(100),
-                                  // border: Border.all(width: 1, color: Colors.black),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.grey[400],
-                                        offset: Offset(1, 10),
-                                        blurRadius: 5)
-                                  ]),
-                              child: CircleAvatar(
-                                radius: 40,
-                                backgroundImage: AssetImage('images/muv.jpg'),
-                              ),
-                            ),
-                            SizedBox(height: 8),
-                            Text('MUV', style: TextStyle(fontSize: 18)),
-                            // Text('@ Rs 499', style: TextStyle(fontSize: 20))
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Package(5),
-                            ));
-                      },
-                    ),
-                    SizedBox(
-                      width: 5,
-                    ),
                   ],
-                )
+                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     SizedBox(
+                //       width: 5,
+                //     ),
+                //     GestureDetector(
+                //         child: Padding(
+                //           padding: const EdgeInsets.all(8),
+                //           child: Column(
+                //             children: [
+                //               Container(
+                //                 decoration: BoxDecoration(
+                //                     color: Colors.white,
+                //                     borderRadius: BorderRadius.circular(100),
+                //                     // border: Border.all(width: 1, color: Colors.black),
+                //                     boxShadow: [
+                //                       BoxShadow(
+                //                           color: Colors.grey[400],
+                //                           offset: Offset(1, 10),
+                //                           blurRadius: 5)
+                //                     ]),
+                //                 child: CircleAvatar(
+                //                   radius: 40,
+                //                   backgroundImage:
+                //                       AssetImage('images/compact_suv.jpg'),
+                //                 ),
+                //               ),
+                //               SizedBox(height: 8),
+                //               Text('Compact SUV',
+                //                   style: TextStyle(fontSize: 18)),
+                //               // Text('@ Rs 349', style: TextStyle(fontSize: 20))
+                //             ],
+                //           ),
+                //         ),
+                //         onTap: () {
+                //           Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                 builder: (context) => Package(3),
+                //               ));
+                //         }),
+                //     GestureDetector(
+                //       child: Padding(
+                //         padding: const EdgeInsets.all(8),
+                //         child: Column(
+                //           children: [
+                //             Container(
+                //               decoration: BoxDecoration(
+                //                   color: Colors.white,
+                //                   borderRadius: BorderRadius.circular(100),
+                //                   // border: Border.all(width: 1, color: Colors.black),
+                //                   boxShadow: [
+                //                     BoxShadow(
+                //                         color: Colors.grey[400],
+                //                         offset: Offset(1, 10),
+                //                         blurRadius: 5)
+                //                   ]),
+                //               child: CircleAvatar(
+                //                 radius: 40,
+                //                 backgroundImage: AssetImage('images/muv.jpg'),
+                //               ),
+                //             ),
+                //             SizedBox(height: 8),
+                //             Text('MUV', style: TextStyle(fontSize: 18)),
+                //             // Text('@ Rs 499', style: TextStyle(fontSize: 20))
+                //           ],
+                //         ),
+                //       ),
+                //       onTap: () {
+                //         Navigator.push(
+                //             context,
+                //             MaterialPageRoute(
+                //               builder: (context) => Package(5),
+                //             ));
+                //       },
+                //     ),
+                //     SizedBox(
+                //       width: 5,
+                //     ),
+                //   ],
+                // )
               ],
             ),
           ],

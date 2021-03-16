@@ -5,19 +5,12 @@ import 'package:happy_wash/after_login.dart';
 import 'package:happy_wash/booking_test.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
 import 'package:happy_wash/profile.dart';
-import 'package:happy_wash/screens/about.dart';
-import 'package:happy_wash/screens/contact_us.dart';
-import 'package:happy_wash/screens/faq.dart';
-import 'package:happy_wash/screens/gallery.dart';
-import 'package:happy_wash/screens/how_it_works.dart';
-import 'package:happy_wash/screens/services.dart';
+
 import 'package:happy_wash/yourBooking.dart';
 import 'package:provider/provider.dart';
 
 // ignore: unused_import
 import 'confirm_booking.dart';
-
-import 'orders.dart';
 
 class Package extends StatefulWidget {
   final int carType;

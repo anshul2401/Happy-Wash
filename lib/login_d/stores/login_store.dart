@@ -8,6 +8,9 @@ import 'package:happy_wash/login_d/pages/otp_page.dart';
 import 'package:happy_wash/user.dart';
 import 'package:happy_wash/user_services.dart';
 import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
+
+import '../../user_provider.dart';
 
 part 'login_store.g.dart';
 
@@ -142,15 +145,26 @@ abstract class LoginStoreBase with Store {
 
     var _checkUser = await _userServicse.getUserById(firebaseUser.uid);
     if (_checkUser == null) {
-      _userServicse.createUser({
-        "id": firebaseUser.uid,
-        "number": firebaseUser.phoneNumber,
-        "email": '',
-        "address": '',
-        "name": '',
-        "landmark": '',
-        "pin": '',
-      });
+      final userProvider = Provider.of<UserProvider>(context);
+      userProvider.setUserID(firebaseUser.uid);
+      userProvider.setPhoneNum(firebaseUser.phoneNumber);
+      userProvider.setPin('');
+      userProvider.setEmail('');
+      userProvider.setAddress('');
+      userProvider.setLandmark('');
+      userProvider.setName('');
+      userProvider.saveOrder();
+
+      // _userServicse.createUser({
+      //   "id": firebaseUser.uid,
+      //   "number": firebaseUser.phoneNumber,
+      //   "email": '',
+      //   "address": '',
+      //   "name": '',
+      //   "landmark": '',
+      //   "pin": '',
+      // });
+
     }
     _userModel = await _userServicse.getUserById(firebaseUser.uid);
     // _userModel = await _userServicse.getUserById(firebaseUser.uid);

@@ -6,6 +6,9 @@ import 'package:happy_wash/login_d/pages/splash_page.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
 import 'package:happy_wash/order_provider.dart';
 import 'package:happy_wash/order_service.dart';
+import 'package:happy_wash/user.dart';
+import 'package:happy_wash/user_provider.dart';
+import 'package:happy_wash/user_services.dart';
 
 import 'package:provider/provider.dart';
 
@@ -15,6 +18,7 @@ void main() {
     providers: [
       ChangeNotifierProvider.value(value: AuthProvider.initialize()),
       ChangeNotifierProvider.value(value: OrderProvider()),
+      ChangeNotifierProvider.value(value: UserProvider()),
       StreamProvider(create: (context) => OrderServices().getUserOrders()),
       Provider<LoginStore>(
         create: (_) => LoginStore(),

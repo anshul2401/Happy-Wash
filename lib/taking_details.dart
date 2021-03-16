@@ -2,21 +2,14 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:happy_wash/after_login.dart';
-import 'package:happy_wash/auth.dart';
+
 import 'package:happy_wash/details.dart';
-import 'package:happy_wash/loding.dart';
-import 'package:happy_wash/login.dart';
+
 import 'package:happy_wash/login_d/stores/login_store.dart';
 import 'package:happy_wash/order_provider.dart';
 import 'package:happy_wash/orders.dart';
 import 'package:happy_wash/profile.dart';
-import 'package:happy_wash/screens/about.dart';
-import 'package:happy_wash/screens/contact_us.dart';
-import 'package:happy_wash/screens/faq.dart';
-import 'package:happy_wash/screens/gallery.dart';
-import 'package:happy_wash/screens/how_it_works.dart';
-import 'package:happy_wash/screens/services.dart';
-import 'package:happy_wash/user.dart';
+
 import 'package:happy_wash/user_services.dart';
 import 'package:happy_wash/yourBooking.dart';
 import 'package:provider/provider.dart';
@@ -62,6 +55,7 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
   String email;
   String name;
   String landmark;
+  var updateProfile = false;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +92,6 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
       }
 
       if (rightpin) {
-        print(widget.package);
         var orderDetails = OrderItem(
           address: address,
           carModel: widget.carModel,
@@ -112,15 +105,17 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
           landmark: landmark,
           package: widget.package,
         );
-        userServices.updateUserData({
-          "id": authProvider.userModel.id,
-          "number": authProvider.userModel.number,
-          "email": email,
-          "address": address,
-          "name": name,
-          "landmark": landmark,
-          "pin": pin
-        });
+        if (updateProfile) {
+          userServices.updateUserData({
+            "id": authProvider.userModel.id,
+            "number": authProvider.userModel.number,
+            "email": email,
+            "address": address,
+            "name": name,
+            "landmark": landmark,
+            "pin": pin
+          });
+        }
 
         Navigator.push(
             context,
@@ -256,25 +251,28 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
                   validator: (value) {
                     if (value.isEmpty) {
                       return "This field is required";
-                      // } else if (pin != '456001' ||
-                      //     pin != '456006' ||
-                      //     pin != '456010' ||
-                      //     pin != '456664') {
-                      //   Fluttertoast.showToast(
-                      //     msg: "Sorry! We do not serve in your city.",
-                      //     toastLength: Toast.LENGTH_SHORT,
-                      //     gravity: ToastGravity.CENTER,
-                      //   );
-                      //   return ' ';
                     }
                     return null;
                   }),
             ),
+            CheckboxListTile(
+              title: Text("Set this as profile imformation"),
+              activeColor: Colors.blue,
+              value: updateProfile,
+              onChanged: (newValue) {
+                setState(() {
+                  updateProfile = newValue;
+                });
+              },
+              controlAffinity:
+                  ListTileControlAffinity.leading, //  <-- leading Checkbox
+            ),
             SizedBox(
-              height: 50,
+              height: 30,
             ),
             GestureDetector(
               onTap: () {
+                print(updateProfile);
                 saveInput();
               },
               child: Padding(

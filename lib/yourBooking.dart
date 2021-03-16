@@ -226,8 +226,13 @@ class _YourBookingState extends State<YourBooking> {
                     itemBuilder: (_, index) {
                       return Padding(
                         padding: const EdgeInsets.only(
-                            left: 10.0, right: 10, top: 10),
+                          left: 10.0,
+                          right: 10,
+                        ),
                         child: Card(
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(15.0),
+                          ),
                           elevation: 5,
                           child: ListTile(
                             title: Text('Booked On'),
@@ -242,6 +247,10 @@ class _YourBookingState extends State<YourBooking> {
                                     child: Text('Cancel'),
                                     color: Colors.red[900],
                                     textColor: Colors.white,
+                                    shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(30.0),
+                                    ),
                                   )
                                 : Text.rich(
                                     TextSpan(
@@ -289,8 +298,13 @@ class _YourBookingState extends State<YourBooking> {
                     itemBuilder: (_, index) {
                       return Padding(
                         padding: const EdgeInsets.only(
-                            left: 10.0, right: 10, top: 10),
+                          left: 10.0,
+                          right: 10,
+                        ),
                         child: Card(
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(15.0),
+                          ),
                           elevation: 5,
                           child: ListTile(
                             title: Text('Booked On'),
@@ -354,8 +368,13 @@ class _YourBookingState extends State<YourBooking> {
                     itemBuilder: (_, index) {
                       return Padding(
                         padding: const EdgeInsets.only(
-                            left: 10.0, right: 10, top: 10),
+                          left: 10.0,
+                          right: 10,
+                        ),
                         child: Card(
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(15.0),
+                          ),
                           elevation: 5,
                           child: ListTile(
                             title: Text('Booked On'),
