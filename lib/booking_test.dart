@@ -73,26 +73,43 @@ class _BookingState extends State<Booking> {
   final getuser = UserServices();
   final int carType;
   _BookingState(this.carType);
+
   String price(int carType) {
     if (carType == 1) {
       if (widget.package == 1) {
-        return '100';
-      } else if (widget.package == 2) {
         return p['hatch_back']['premium_wash'];
+      } else if (widget.package == 2) {
+        return p['hatch_back']['standard_wash'];
       } else if (widget.package == 3) {
-        return p['hatch_back']['interior_detailing'];
+        return p['hatch_back']['interior_wash'];
       } else if (widget.package == 4) {
         return p['hatch_back']['exterior_wash'];
+      } else if (widget.package == 5) {
+        return p['hatch_back']['premium_bike'];
+      } else if (widget.package == 6) {
+        return p['hatch_back']['standard_bike'];
+      } else if (widget.package == 7) {
+        return p['hatch_back']['two_premium'];
+      } else if (widget.package == 8) {
+        return p['hatch_back']['four_premium'];
       }
     } else if (carType == 2) {
       if (widget.package == 1) {
-        return '100';
-      } else if (widget.package == 2) {
         return p['sedan']['premium_wash'];
+      } else if (widget.package == 2) {
+        return p['sedan']['standard_wash'];
       } else if (widget.package == 3) {
-        return p['sedan']['interior_detailing'];
+        return p['sedan']['interior_wash'];
       } else if (widget.package == 4) {
         return p['sedan']['exterior_wash'];
+      } else if (widget.package == 5) {
+        return p['sedan']['premium_bike'];
+      } else if (widget.package == 6) {
+        return p['sedan']['standard_bike'];
+      } else if (widget.package == 7) {
+        return p['sedan']['two_premium'];
+      } else if (widget.package == 8) {
+        return p['sedan']['four_premium'];
       }
     } else if (carType == 3) {
       if (widget.package == 1) {
@@ -106,13 +123,21 @@ class _BookingState extends State<Booking> {
       }
     } else if (carType == 4) {
       if (widget.package == 1) {
-        return '100';
-      } else if (widget.package == 2) {
         return p['suv']['premium_wash'];
+      } else if (widget.package == 2) {
+        return p['suv']['standard_wash'];
       } else if (widget.package == 3) {
-        return p['suv']['interior_detailing'];
+        return p['suv']['interior_wash'];
       } else if (widget.package == 4) {
         return p['suv']['exterior_wash'];
+      } else if (widget.package == 5) {
+        return p['suv']['premium_bike'];
+      } else if (widget.package == 6) {
+        return p['suv']['standard_bike'];
+      } else if (widget.package == 7) {
+        return p['suv']['two_premium'];
+      } else if (widget.package == 8) {
+        return p['suv']['four_premium'];
       }
     } else if (carType == 5) {
       if (widget.package == 1) {
@@ -138,6 +163,7 @@ class _BookingState extends State<Booking> {
 
   @override
   Widget build(BuildContext context) {
+    print(carType);
     // final authProvider = Provider.of<AuthProvider>(context);
     final authProvider = Provider.of<LoginStore>(context);
 

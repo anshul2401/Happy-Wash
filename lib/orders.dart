@@ -15,6 +15,7 @@ class OrderItem {
   final String status;
   final String landmark;
   final String package;
+  final String paymentStatus;
 
   OrderItem({
     // @required this.id,
@@ -30,6 +31,7 @@ class OrderItem {
     @required this.status,
     @required this.landmark,
     @required this.package,
+    @required this.paymentStatus,
   });
 
   Map<String, dynamic> toMap() {
@@ -44,7 +46,8 @@ class OrderItem {
       "time": time,
       "status": status,
       "landmark": landmark,
-      "package": package
+      "package": package,
+      "paymentStatus": paymentStatus,
     };
   }
 
@@ -59,5 +62,6 @@ class OrderItem {
         time = firestore['time'],
         status = firestore['status'],
         landmark = firestore['landmark'],
-        package = firestore['package'];
+        package = firestore['package'],
+        paymentStatus = firestore['paymentStatus'];
 }

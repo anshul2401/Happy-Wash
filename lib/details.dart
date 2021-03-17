@@ -42,7 +42,7 @@ class _DetailsOfBookingState extends State<DetailsOfBooking> {
 
   void paymentSuccessful(PaymentSuccessResponse response) {
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-      return BookingConfirmed(widget.orderDetails);
+      return BookingConfirmed(widget.orderDetails, 'Paid');
     }));
   }
 
@@ -52,7 +52,7 @@ class _DetailsOfBookingState extends State<DetailsOfBooking> {
 
   void openCheckout() {
     var options = {
-      "key": "rzp_test_bi3uL9T3ZXTade",
+      "key": "rzp_live_fo8bJpJWV6ahPH",
       "amount": num.parse(widget.amount) * 100,
       "name": "Happy Wash",
       "description": "A step Away",
@@ -170,6 +170,36 @@ class _DetailsOfBookingState extends State<DetailsOfBooking> {
             ),
             SizedBox(
               height: 50,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) {
+                  return BookingConfirmed(widget.orderDetails, 'Not Paid');
+                }));
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color.fromRGBO(0, 127, 219, 1),
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Cash on Delivery',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                            ))
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
             GestureDetector(
               onTap: () {

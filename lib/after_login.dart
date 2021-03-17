@@ -37,7 +37,7 @@ class _AfterLoginState extends State<AfterLogin> {
   Widget build(BuildContext context) {
     final authProvider = Provider.of<LoginStore>(context);
     print(authProvider.userModel.number);
-    if (authProvider.userModel.number == '+919340133342') {
+    if (authProvider.userModel.number == '+918888888888') {
       return AdminScreen();
     } else {
       return Scaffold(

@@ -110,7 +110,7 @@ class _CarouselWithIndicatorDemoState extends State<CarouselWithIndicatorDemo> {
         images: [
           AssetImage('images/slider1.jpg'),
           AssetImage('images/slider6.jpg'),
-          AssetImage('images/slider7.jpg'),
+          // AssetImage('images/slider7.jpg'),
           AssetImage('images/slider8.jpg'),
           AssetImage('images/slider9.jpg')
         ],

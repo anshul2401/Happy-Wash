@@ -135,6 +135,15 @@ class _OrderDetState extends State<OrderDet> {
                 ),
               ),
               SizedBox(
+                height: 10,
+              ),
+              Text(
+                'PAYMENT STATUS: ' + widget.order.paymentStatus,
+                style: TextStyle(
+                  fontSize: 18,
+                ),
+              ),
+              SizedBox(
                 height: 20,
               ),
               Row(
@@ -159,7 +168,8 @@ class _OrderDetState extends State<OrderDet> {
                                   'date': widget.order.date,
                                   'time': widget.order.time,
                                   'status': 'Completed',
-                                  'landmark': widget.order.landmark
+                                  'landmark': widget.order.landmark,
+                                  'paymentStatus': 'Paid'
                                 });
                                 Navigator.of(context).pop();
                               } catch (e) {
@@ -196,7 +206,10 @@ class _OrderDetState extends State<OrderDet> {
                           getCarModel(widget.order.carModel) +
                           '\n' +
                           'PACKGAE: ' +
-                          getPackage(widget.order.package));
+                          getPackage(widget.order.package) +
+                          '\n' +
+                          'PAYMENT STATUS: ' +
+                          widget.order.paymentStatus);
                     },
                     child: Text(
                       'Share',

@@ -41,7 +41,8 @@ class _YourBookingState extends State<YourBooking> {
                 'date': order.date,
                 'time': order.time,
                 'status': 'Cancel',
-                'landmark': order.landmark
+                'landmark': order.landmark,
+                'paymentStatus': order.paymentStatus,
               });
               Navigator.of(context).pop();
               // set up the button

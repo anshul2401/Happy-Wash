@@ -104,6 +104,7 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
           userId: authProvider.userModel.id,
           landmark: landmark,
           package: widget.package,
+          paymentStatus: null,
         );
         if (updateProfile) {
           userServices.updateUserData({

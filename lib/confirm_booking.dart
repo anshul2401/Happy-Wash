@@ -7,7 +7,8 @@ import 'after_login.dart';
 // ignore: must_be_immutable
 class BookingConfirmed extends StatefulWidget {
   OrderItem orderDetails;
-  BookingConfirmed(this.orderDetails);
+  String paymentStatus;
+  BookingConfirmed(this.orderDetails, this.paymentStatus);
 
   @override
   _BookingConfirmedState createState() => _BookingConfirmedState();
@@ -38,6 +39,7 @@ class _BookingConfirmedState extends State<BookingConfirmed> {
     orderProvider.setStatus(widget.orderDetails.status);
     orderProvider.setLandmark(widget.orderDetails.landmark);
     orderProvider.setPackage(widget.orderDetails.package);
+    orderProvider.setPaymentStatus(widget.paymentStatus);
     orderProvider.saveOrder();
     Future<bool> _onBackPressed() {
       return Navigator.pushReplacement(

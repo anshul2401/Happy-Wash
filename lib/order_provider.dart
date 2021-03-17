@@ -17,6 +17,7 @@ class OrderProvider with ChangeNotifier {
   String _status;
   String _landmark;
   String _package;
+  String _paymentStatus;
   var uuid = Uuid();
 
   String get userId => _userId;
@@ -29,6 +30,7 @@ class OrderProvider with ChangeNotifier {
   String get status => _status;
   String get landmark => _landmark;
   String get package => _package;
+  String get paymentStatus => _paymentStatus;
 
   setUserID(String value) {
     _userId = value;
@@ -79,6 +81,11 @@ class OrderProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  setPaymentStatus(String value) {
+    _paymentStatus = value;
+    notifyListeners();
+  }
+
   saveOrder() {
     var newOrder = OrderItem(
       orderId: uuid.v4(),
@@ -92,6 +99,7 @@ class OrderProvider with ChangeNotifier {
       status: _status,
       landmark: _landmark,
       package: _package,
+      paymentStatus: _paymentStatus,
     );
     orderService.saveOrder(newOrder);
   }

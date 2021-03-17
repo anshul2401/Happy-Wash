@@ -14,7 +14,8 @@ class _CancelledOrderState extends State<CancelledOrder> {
   @override
   Widget build(BuildContext context) {
     final order = Provider.of<List<OrderItem>>(context)
-        .where((element) => element.status == 'Cancel')
+        .where((element) =>
+            element.status == 'Cancel' && element.paymentStatus == 'Paid')
         .toList();
     final orderRefunded = Provider.of<List<OrderItem>>(context)
         .where((element) => element.status == 'Refunded')
