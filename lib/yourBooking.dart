@@ -8,7 +8,7 @@ import 'package:happy_wash/orders.dart';
 import 'package:happy_wash/screens/how_it_works.dart';
 
 import 'package:provider/provider.dart';
-
+import 'package:intl/intl.dart';
 import 'package:happy_wash/after_login.dart';
 import 'package:happy_wash/profile.dart';
 import 'package:happy_wash/screens/about.dart';
@@ -43,6 +43,7 @@ class _YourBookingState extends State<YourBooking> {
                 'status': 'Cancel',
                 'landmark': order.landmark,
                 'paymentStatus': order.paymentStatus,
+                'package': order.package,
               });
               Navigator.of(context).pop();
               // set up the button
@@ -114,9 +115,13 @@ class _YourBookingState extends State<YourBooking> {
 
     final user = Provider.of<LoginStore>(context);
 
-    final order = Provider.of<List<OrderItem>>(context)
+    final orderr = Provider.of<List<OrderItem>>(context)
         .where((element) => element.userId == user.firebaseUser.uid)
         .toList();
+    orderr.sort((a, b) => DateFormat('dd-MM-yyyy')
+        .parse(a.date)
+        .compareTo(DateFormat('dd-MM-yyyy').parse(b.date)));
+    final order = orderr.reversed.toList();
 
     final completeOrder =
         order.where((element) => element.status == 'Completed').toList();
@@ -126,6 +131,27 @@ class _YourBookingState extends State<YourBooking> {
         .where((element) =>
             element.status == 'Cancel' || element.status == 'Refunded')
         .toList();
+
+    for (int i = 0; i < order.length; i++) {
+      for (int j = i + 1; j < order.length; j++) {
+        if (order[i].date == order[j].date && order[i].time == order[j].time) {
+          orderServices.updateUserData({
+            "id": order[j].orderId,
+            "userId": '',
+            'name': '',
+            'address': '',
+            'phoneNum': '',
+            'carModel': '',
+            'date': '',
+            'time': '',
+            'status': '',
+            'landmark': '',
+            'paymentStatus': '',
+            'package': '',
+          });
+        }
+      }
+    }
 
     return MaterialApp(
       home: DefaultTabController(

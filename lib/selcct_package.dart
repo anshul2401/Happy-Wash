@@ -71,56 +71,56 @@ class PackageState extends State<Package> {
     List<List<Text>> packagePrice = [
       [
         Text(
-          p['hatch_back']['premium_wash'],
+          '₹ ' + p['hatch_back']['premium_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['hatch_back']['interior_detailing'],
+          '₹ ' + p['hatch_back']['interior_detailing'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['hatch_back']['exterior_wash'],
+          '₹ ' + p['hatch_back']['exterior_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['hatch_back']['standard_wash'],
+          '₹ ' + p['hatch_back']['standard_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['hatch_back']['premium_bike'],
+          '₹ ' + p['hatch_back']['premium_bike'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['hatch_back']['standard_bike'],
+          '₹ ' + p['hatch_back']['standard_bike'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['hatch_back']['two_premium'],
+          '₹ ' + p['hatch_back']['two_premium'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['hatch_back']['four_premium'],
+          '₹ ' + p['hatch_back']['four_premium'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -129,56 +129,56 @@ class PackageState extends State<Package> {
       ],
       [
         Text(
-          p['sedan']['premium_wash'],
+          '₹ ' + p['sedan']['premium_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['sedan']['interior_detailing'],
+          '₹ ' + p['sedan']['interior_detailing'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['sedan']['exterior_wash'],
+          '₹ ' + p['sedan']['exterior_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['sedan']['standard_wash'],
+          '₹ ' + p['sedan']['standard_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['sedan']['premium_bike'],
+          '₹ ' + p['sedan']['premium_bike'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['sedan']['standard_bike'],
+          '₹ ' + p['sedan']['standard_bike'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['sedan']['two_premium'],
+          '₹ ' + p['sedan']['two_premium'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['sedan']['four_premium'],
+          '₹ ' + p['sedan']['four_premium'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -245,56 +245,56 @@ class PackageState extends State<Package> {
       ],
       [
         Text(
-          p['suv']['premium_wash'],
+          '₹ ' + p['suv']['premium_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['suv']['interior_detailing'],
+          '₹ ' + p['suv']['interior_detailing'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['suv']['exterior_wash'],
+          '₹ ' + p['suv']['exterior_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['suv']['standard_wash'],
+          '₹ ' + p['suv']['standard_wash'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['suv']['premium_bike'],
+          '₹ ' + p['suv']['premium_bike'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['suv']['standard_bike'],
+          '₹ ' + p['suv']['standard_bike'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['suv']['two_premium'],
+          '₹ ' + p['suv']['two_premium'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'Alegreya'),
         ),
         Text(
-          p['suv']['four_premium'],
+          '₹ ' + p['suv']['four_premium'],
           style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -422,226 +422,7 @@ class PackageState extends State<Package> {
               SizedBox(
                 height: 10,
               ),
-              Card(
-                elevation: 5,
-                child: ExpansionTile(
-                  title: RadioListTile(
-                    value: 1,
-                    groupValue: selectedRadioTile,
-                    title: Text(
-                      "Premium Wash",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    onChanged: (val) {
-                      setSelectedRadioTile(val);
-                    },
-                    activeColor: Color.fromRGBO(0, 127, 219, 1),
-                    secondary: packagePrice[widget.carType - 1][0],
-                  ),
-                  expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
-                  childrenPadding:
-                      EdgeInsets.only(left: 30, bottom: 10, right: 20),
-                  tilePadding: EdgeInsets.only(
-                    right: 10,
-                  ),
-                  children: <Widget>[
-                    Text(
-                      "•	Complete car water rinse",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Exterior car foam wash",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Eco glass clean & gloss",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Clean front grill & mud flaps",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Dashboard cleaning & shine",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Car interior Sanitization ",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Cleaning of Hinges & side doors ",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete interior boot space cleaning",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete interior vacuuming",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete engine water rinse",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete chassis/Undercarriage wash",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Side doors panel polish",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete mirror/glass clean",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Tyre polish",
-                      style: TextStyle(fontSize: 18, height: 1.5),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Water and Electricity is to be provided by the customer",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Card(
-                elevation: 5,
-                child: ExpansionTile(
-                  title: RadioListTile(
-                    value: 2,
-                    groupValue: selectedRadioTile,
-                    title: Text(
-                      "Standard Wash",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    onChanged: (val) {
-                      setSelectedRadioTile(val);
-                    },
-                    activeColor: Color.fromRGBO(0, 127, 219, 1),
-                    secondary: packagePrice[widget.carType - 1][3],
-                  ),
-                  tilePadding: EdgeInsets.only(right: 10),
-                  expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
 
-                  childrenPadding:
-                      EdgeInsets.only(left: 30, bottom: 10, right: 20),
-                  // subtitle: Text("  Sub Title's"),
-                  children: <Widget>[
-                    Text(
-                      "•	Complete car water rinse",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Exterior car foam wash",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Clean front frill and mud flaps",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Dashboard clean and polish",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete Interior boot space cleaning",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete Interior vacuuming ",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete engine water rinse",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete mirror/glass clean",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Tyre Polish",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Water and Electricity is to be provided by the customer",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                  ],
-                ),
-              ),
-
-              SizedBox(
-                height: 15,
-              ),
               Card(
                 elevation: 5,
                 child: ExpansionTile(
@@ -843,6 +624,336 @@ class PackageState extends State<Package> {
                 elevation: 5,
                 child: ExpansionTile(
                   title: RadioListTile(
+                    value: 2,
+                    groupValue: selectedRadioTile,
+                    title: Text(
+                      "Standard Wash",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onChanged: (val) {
+                      setSelectedRadioTile(val);
+                    },
+                    activeColor: Color.fromRGBO(0, 127, 219, 1),
+                    secondary: packagePrice[widget.carType - 1][3],
+                  ),
+                  tilePadding: EdgeInsets.only(right: 10),
+                  expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+
+                  childrenPadding:
+                      EdgeInsets.only(left: 30, bottom: 10, right: 20),
+                  // subtitle: Text("  Sub Title's"),
+                  children: <Widget>[
+                    Text(
+                      "•	Complete car water rinse",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Exterior car foam wash",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Clean front frill and mud flaps",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Dashboard clean and polish",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete Interior boot space cleaning",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete Interior vacuuming ",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete engine water rinse",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete mirror/glass clean",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Tyre Polish",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Water and Electricity is to be provided by the customer",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(
+                height: 15,
+              ),
+              Card(
+                elevation: 5,
+                child: ExpansionTile(
+                  title: RadioListTile(
+                    value: 1,
+                    groupValue: selectedRadioTile,
+                    title: Text(
+                      "Premium Wash",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onChanged: (val) {
+                      setSelectedRadioTile(val);
+                    },
+                    activeColor: Color.fromRGBO(0, 127, 219, 1),
+                    secondary: packagePrice[widget.carType - 1][0],
+                  ),
+                  expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+                  childrenPadding:
+                      EdgeInsets.only(left: 30, bottom: 10, right: 20),
+                  tilePadding: EdgeInsets.only(
+                    right: 10,
+                  ),
+                  children: <Widget>[
+                    Text(
+                      "•	Complete car water rinse",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Exterior car foam wash",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Eco glass clean & gloss",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Clean front grill & mud flaps",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Dashboard cleaning & shine",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Car interior Sanitization ",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Cleaning of Hinges & side doors ",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete interior boot space cleaning",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete interior vacuuming",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete engine water rinse",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete chassis/Undercarriage wash",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Side doors panel polish",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete mirror/glass clean",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Tyre polish",
+                      style: TextStyle(fontSize: 18, height: 1.5),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Water and Electricity is to be provided by the customer",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+
+              Card(
+                elevation: 5,
+                child: ExpansionTile(
+                  title: RadioListTile(
+                    value: 6,
+                    groupValue: selectedRadioTile,
+                    title: Text(
+                      "Standard + Bike Wash",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    onChanged: (val) {
+                      setSelectedRadioTile(val);
+                    },
+                    activeColor: Color.fromRGBO(0, 127, 219, 1),
+                    secondary: packagePrice[widget.carType - 1][5],
+                  ),
+                  tilePadding: EdgeInsets.only(right: 10),
+                  expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
+
+                  childrenPadding:
+                      EdgeInsets.only(left: 30, bottom: 10, right: 20),
+                  // subtitle: Text("  Sub Title's"),
+                  children: <Widget>[
+                    Text(
+                      "•	Complete car & Bike water rinse ",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Exterior car & Bike foam wash",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Clean front frill and mud flaps",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Dashboard clean and polish",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete Interior boot space cleaning",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete Interior vacuuming",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete engine water rinse of Car & Bike",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Complete mirror/glass clean",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Tyre polish",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                    Text(
+                      "•	Water and Electricity is to be provided by the customer",
+                      style: TextStyle(
+                        fontSize: 18,
+                        height: 1.5,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Card(
+                elevation: 5,
+                child: ExpansionTile(
+                  title: RadioListTile(
                     value: 5,
                     groupValue: selectedRadioTile,
                     title: Text(
@@ -985,118 +1096,11 @@ class PackageState extends State<Package> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 15,
-              ),
-              Card(
-                elevation: 5,
-                child: ExpansionTile(
-                  title: RadioListTile(
-                    value: 6,
-                    groupValue: selectedRadioTile,
-                    title: Text(
-                      "Standard + Bike Wash",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    onChanged: (val) {
-                      setSelectedRadioTile(val);
-                    },
-                    activeColor: Color.fromRGBO(0, 127, 219, 1),
-                    secondary: packagePrice[widget.carType - 1][5],
-                  ),
-                  tilePadding: EdgeInsets.only(right: 10),
-                  expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
 
-                  childrenPadding:
-                      EdgeInsets.only(left: 30, bottom: 10, right: 20),
-                  // subtitle: Text("  Sub Title's"),
-                  children: <Widget>[
-                    Text(
-                      "•	Complete car & Bike water rinse ",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Exterior car & Bike foam wash",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Clean front frill and mud flaps",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Dashboard clean and polish",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete Interior boot space cleaning",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete Interior vacuuming",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete engine water rinse of Car & Bike",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Complete mirror/glass clean",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Tyre polish",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                    Text(
-                      "•	Water and Electricity is to be provided by the customer",
-                      style: TextStyle(
-                        fontSize: 18,
-                        height: 1.5,
-                      ),
-                      textAlign: TextAlign.justify,
-                    ),
-                  ],
-                ),
-              ),
               SizedBox(
                 height: 20,
               ),
+
               Text(
                 'Monthly Package',
                 style: TextStyle(

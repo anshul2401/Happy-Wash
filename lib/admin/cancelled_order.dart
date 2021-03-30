@@ -3,6 +3,7 @@ import 'package:happy_wash/admin/order_det.dart';
 import 'package:happy_wash/order_service.dart';
 import 'package:happy_wash/orders.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class CancelledOrder extends StatefulWidget {
   @override
@@ -14,9 +15,9 @@ class _CancelledOrderState extends State<CancelledOrder> {
   @override
   Widget build(BuildContext context) {
     final order = Provider.of<List<OrderItem>>(context)
-        .where((element) =>
-            element.status == 'Cancel' && element.paymentStatus == 'Paid')
+        .where((element) => element.status == 'Cancel')
         .toList();
+
     final orderRefunded = Provider.of<List<OrderItem>>(context)
         .where((element) => element.status == 'Refunded')
         .toList();
@@ -77,12 +78,13 @@ class _CancelledOrderState extends State<CancelledOrder> {
                                             TextSpan(
                                               children: [
                                                 TextSpan(
-                                                    text: 'Status: ',
+                                                    text: 'Payment Status: ',
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold)),
                                                 TextSpan(
-                                                  text: order[index].status,
+                                                  text: order[index]
+                                                      .paymentStatus,
                                                   style: TextStyle(
                                                       color: Colors.red),
                                                 ),
@@ -90,35 +92,45 @@ class _CancelledOrderState extends State<CancelledOrder> {
                                             ),
                                           ),
                                         ),
-                                        FlatButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              try {
-                                                orderServices.updateUserData({
-                                                  "id": order[index].orderId,
-                                                  "userId": order[index].userId,
-                                                  'name': order[index].name,
-                                                  'address':
-                                                      order[index].address,
-                                                  'phoneNum':
-                                                      order[index].phoneNum,
-                                                  'carModel':
-                                                      order[index].carModel,
-                                                  'date': order[index].date,
-                                                  'time': order[index].time,
-                                                  'status': 'Refunded',
-                                                  'landmark':
-                                                      order[index].landmark
-                                                });
-                                              } catch (e) {
-                                                print(e);
-                                              }
-                                            });
-                                          },
-                                          child: Text('Refunded'),
-                                          textColor: Colors.white,
-                                          color: Colors.green,
-                                        )
+                                        order[index].paymentStatus == 'Paid'
+                                            ? FlatButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    try {
+                                                      orderServices
+                                                          .updateUserData({
+                                                        "id": order[index]
+                                                            .orderId,
+                                                        "userId":
+                                                            order[index].userId,
+                                                        'name':
+                                                            order[index].name,
+                                                        'address': order[index]
+                                                            .address,
+                                                        'phoneNum': order[index]
+                                                            .phoneNum,
+                                                        'carModel': order[index]
+                                                            .carModel,
+                                                        'date':
+                                                            order[index].date,
+                                                        'time':
+                                                            order[index].time,
+                                                        'status': 'Refunded',
+                                                        'landmark': order[index]
+                                                            .landmark,
+                                                        'package':
+                                                            order[index].package
+                                                      });
+                                                    } catch (e) {
+                                                      print(e);
+                                                    }
+                                                  });
+                                                },
+                                                child: Text('Refunded'),
+                                                textColor: Colors.white,
+                                                color: Colors.green,
+                                              )
+                                            : Container(),
                                       ],
                                     ),
                                   ),

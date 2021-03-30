@@ -180,7 +180,7 @@ class _HowItWorksState extends State<HowItWorks> {
               Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: AssetImage('images/cart.jpg'),
+                    backgroundImage: AssetImage('images/shopping2.jpg'),
                     radius: 50,
                   ),
                   SizedBox(

@@ -4,6 +4,7 @@ import 'package:happy_wash/admin/cancel_date.dart';
 import 'package:happy_wash/admin/cancelled_order.dart';
 import 'package:happy_wash/admin/order_det.dart';
 import 'package:happy_wash/login_d/stores/login_store.dart';
+import 'package:happy_wash/order_service.dart';
 import 'package:happy_wash/orders.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,7 @@ class _AdminScreenState extends State<AdminScreen> {
   Widget build(BuildContext context) {
     final DateFormat formatter = DateFormat('dd-MM-yyyy');
     final String todayDate = formatter.format(DateTime.now()).toString();
-
+    OrderServices orderServices = new OrderServices();
     final order = Provider.of<List<OrderItem>>(context)
         .where((element) =>
             element.date == formatter.format(pickedDate).toString())
@@ -56,6 +57,27 @@ class _AdminScreenState extends State<AdminScreen> {
           pickedDate = value;
         });
       });
+    }
+
+    for (int i = 0; i < order.length; i++) {
+      for (int j = i + 1; j < order.length; j++) {
+        if (order[i].date == order[j].date && order[i].time == order[j].time) {
+          orderServices.updateUserData({
+            "id": order[j].orderId,
+            "userId": '',
+            'name': '',
+            'address': '',
+            'phoneNum': '',
+            'carModel': '',
+            'date': '',
+            'time': '',
+            'status': '',
+            'landmark': '',
+            'paymentStatus': '',
+            'package': '',
+          });
+        }
+      }
     }
 
     return MaterialApp(

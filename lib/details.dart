@@ -41,6 +41,7 @@ class _DetailsOfBookingState extends State<DetailsOfBooking> {
   }
 
   void paymentSuccessful(PaymentSuccessResponse response) {
+    print('thisi');
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
       return BookingConfirmed(widget.orderDetails, 'Paid');
     }));

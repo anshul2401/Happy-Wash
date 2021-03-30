@@ -75,13 +75,15 @@ class _BookingState extends State<Booking> {
   _BookingState(this.carType);
 
   String price(int carType) {
+    print(p['hatch_back']);
+    print(widget.package);
     if (carType == 1) {
       if (widget.package == 1) {
         return p['hatch_back']['premium_wash'];
       } else if (widget.package == 2) {
         return p['hatch_back']['standard_wash'];
       } else if (widget.package == 3) {
-        return p['hatch_back']['interior_wash'];
+        return p['hatch_back']['interior_detailing'];
       } else if (widget.package == 4) {
         return p['hatch_back']['exterior_wash'];
       } else if (widget.package == 5) {
@@ -99,7 +101,7 @@ class _BookingState extends State<Booking> {
       } else if (widget.package == 2) {
         return p['sedan']['standard_wash'];
       } else if (widget.package == 3) {
-        return p['sedan']['interior_wash'];
+        return p['sedan']['interior_detailing'];
       } else if (widget.package == 4) {
         return p['sedan']['exterior_wash'];
       } else if (widget.package == 5) {
@@ -127,7 +129,7 @@ class _BookingState extends State<Booking> {
       } else if (widget.package == 2) {
         return p['suv']['standard_wash'];
       } else if (widget.package == 3) {
-        return p['suv']['interior_wash'];
+        return p['suv']['interior_detailing'];
       } else if (widget.package == 4) {
         return p['suv']['exterior_wash'];
       } else if (widget.package == 5) {

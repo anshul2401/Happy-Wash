@@ -11,16 +11,85 @@ class OrderDet extends StatefulWidget {
 }
 
 class _OrderDetState extends State<OrderDet> {
+  void cancelOrder(OrderItem order, BuildContext context) {
+    // set up the buttons
+    Widget cancelButton = FlatButton(
+      child: Text("Yes"),
+      onPressed: () {
+        setState(
+          () {
+            try {
+              orderServices.updateUserData({
+                "id": order.orderId,
+                "userId": order.userId,
+                'name': order.name,
+                'address': order.address,
+                'phoneNum': order.phoneNum,
+                'carModel': order.carModel,
+                'date': order.date,
+                'time': order.time,
+                'status': 'Cancel',
+                'landmark': order.landmark,
+                'paymentStatus': order.paymentStatus,
+                'package': order.package,
+              });
+              Navigator.of(context).pop();
+            } catch (e) {
+              print(e);
+            }
+            Navigator.of(context).pop();
+          },
+        );
+      },
+    );
+    Widget continueButton = FlatButton(
+      child: Text("No"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      content: Text("Are you sure you want to cancel the order?"),
+      actions: [
+        cancelButton,
+        continueButton,
+      ],
+    );
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
   OrderServices orderServices = new OrderServices();
   String getPackage(String package) {
-    if (package == '2') {
+    if (package == '1') {
       return 'Premium Wash';
     }
+    if (package == '2') {
+      return 'Standard Wash';
+    }
     if (package == '3') {
-      return 'Interior Detailing';
+      return 'Interior Wash';
     }
     if (package == '4') {
       return 'Exterior Wash';
+    }
+    if (package == '5') {
+      return 'Premium + Bike wash';
+    }
+    if (package == '6') {
+      return 'Standard + Bike Wash';
+    }
+    if (package == '7') {
+      return '2 Premium wash per month';
+    }
+    if (package == '8') {
+      return '4 Premium wash per month';
     }
   }
 
@@ -169,7 +238,8 @@ class _OrderDetState extends State<OrderDet> {
                                   'time': widget.order.time,
                                   'status': 'Completed',
                                   'landmark': widget.order.landmark,
-                                  'paymentStatus': 'Paid'
+                                  'paymentStatus': 'Paid',
+                                  'package': widget.order.package
                                 });
                                 Navigator.of(context).pop();
                               } catch (e) {
@@ -215,9 +285,19 @@ class _OrderDetState extends State<OrderDet> {
                       'Share',
                       style: TextStyle(color: Colors.white),
                     ),
-                  )
+                  ),
+                  widget.order.status == 'Cancel'
+                      ? Container()
+                      : FlatButton(
+                          onPressed: () {
+                            cancelOrder(widget.order, context);
+                          },
+                          child: Text('Cancel'),
+                          color: Colors.red[900],
+                          textColor: Colors.white,
+                        )
                 ],
-              )
+              ),
             ],
           ),
         ));
