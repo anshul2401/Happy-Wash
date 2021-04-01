@@ -168,7 +168,11 @@ abstract class LoginStoreBase with Store {
     }
     _userModel = await _userServicse.getUserById(firebaseUser.uid);
     // _userModel = await _userServicse.getUserById(firebaseUser.uid);
-    firebaseUser.phoneNumber == '+918888888888'
+    (firebaseUser.phoneNumber == '+918888888888' ||
+            firebaseUser.phoneNumber == '+918147016636' ||
+            firebaseUser.phoneNumber == '+919716632324' ||
+            firebaseUser.phoneNumber == '+919179711289' ||
+            firebaseUser.phoneNumber == '+919739363202')
         ? Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (_) => AdminScreen()),
             (Route<dynamic> route) => false)
