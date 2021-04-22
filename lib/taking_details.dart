@@ -121,8 +121,10 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    DetailsOfBooking(orderDetails, widget.amount, email)));
+                builder: (context) => DetailsOfBooking(
+                    orderDetails,
+                    widget.amount,
+                    email == '' ? 'happywashops@gmail.com' : email)));
       } else {
         Fluttertoast.showToast(
           msg: "Sorry! We do not serve in your city.",
@@ -163,7 +165,7 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
             new Container(
               child: new TextFormField(
                 decoration: const InputDecoration(
-                  labelText: "Name",
+                  labelText: "Name\*",
                 ),
                 autocorrect: false,
                 onSaved: (newValue) {
@@ -187,29 +189,10 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
                 },
               ),
             ),
+
             new Container(
               child: new TextFormField(
-                decoration: const InputDecoration(labelText: "Email ID"),
-                autocorrect: false,
-                // controller: _emailController,
-                onSaved: (newValue) {
-                  email = newValue;
-                },
-                initialValue: email,
-                // validator: (value) {
-                //   if (value.isEmpty) {
-                //     return "This field is required";
-                //   }
-                //   return null;
-                // },
-                validator: (value) => EmailValidator.validate(value)
-                    ? null
-                    : "Invalid Email address",
-              ),
-            ),
-            new Container(
-              child: new TextFormField(
-                decoration: const InputDecoration(labelText: "Address"),
+                decoration: const InputDecoration(labelText: "Address\*"),
                 autocorrect: false,
                 onSaved: (newValue) {
                   address = newValue;
@@ -225,7 +208,7 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
             ),
             new Container(
               child: new TextFormField(
-                decoration: const InputDecoration(labelText: "Landmark"),
+                decoration: const InputDecoration(labelText: "Landmark\*"),
                 autocorrect: false,
                 onSaved: (newValue) {
                   landmark = newValue;
@@ -241,7 +224,7 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
             ),
             new Container(
               child: new TextFormField(
-                  decoration: const InputDecoration(labelText: "PIN Code"),
+                  decoration: const InputDecoration(labelText: "PIN Code\*"),
                   autocorrect: false,
                   // controller: _emailController,
                   onSaved: (newValue) {
@@ -255,6 +238,23 @@ class _TakingUserDetailsState extends State<TakingUserDetails> {
                     }
                     return null;
                   }),
+            ),
+            new Container(
+              child: new TextFormField(
+                decoration: const InputDecoration(labelText: "Email ID"),
+                autocorrect: false,
+                // controller: _emailController,
+                onSaved: (newValue) {
+                  email = newValue;
+                },
+                initialValue: email,
+                // validator: (value) {
+                //   if (value.isEmpty) {
+                //     return "This field is required";
+                //   }
+                //   return null;
+                // },
+              ),
             ),
             CheckboxListTile(
               title: Text("Set this as profile imformation"),

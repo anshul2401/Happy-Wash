@@ -14,10 +14,14 @@ class _CancelledOrderState extends State<CancelledOrder> {
   OrderServices orderServices = new OrderServices();
   @override
   Widget build(BuildContext context) {
-    final order = Provider.of<List<OrderItem>>(context)
+    final orderr = Provider.of<List<OrderItem>>(context)
         .where((element) => element.status == 'Cancel')
         .toList();
 
+    orderr.sort((a, b) => DateFormat('dd-MM-yyyy')
+        .parse(a.date)
+        .compareTo(DateFormat('dd-MM-yyyy').parse(b.date)));
+    final order = orderr.reversed.toList();
     final orderRefunded = Provider.of<List<OrderItem>>(context)
         .where((element) => element.status == 'Refunded')
         .toList();

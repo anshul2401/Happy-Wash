@@ -134,7 +134,10 @@ class _YourBookingState extends State<YourBooking> {
 
     for (int i = 0; i < order.length; i++) {
       for (int j = i + 1; j < order.length; j++) {
-        if (order[i].date == order[j].date && order[i].time == order[j].time) {
+        if (order[i].date == order[j].date &&
+            order[i].time == order[j].time &&
+            order[i].status == order[j].status &&
+            order[i].status == 'Pending') {
           orderServices.updateUserData({
             "id": order[j].orderId,
             "userId": '',
